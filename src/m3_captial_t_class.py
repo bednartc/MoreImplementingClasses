@@ -16,7 +16,7 @@ def main():
     print('Un-comment the calls in MAIN one by one')
     print(' to run the testing code as you complete the TODOs.')
 
-    # run_test_simple_t()
+    run_test_simple_t()
     # run_test_set_colors()
     # run_test_move_by()
     # run_test_clone()
@@ -137,11 +137,19 @@ class CapitalT(object):
           :type letter_thickness:   int
         """
         # --------------------------------------------------------------
-        # TODO: 3.
+        # Done: 3.
         #   READ the above specification, including the Example.
         #   Implement this method
         #   Note: you will need to also implement attach_to before testing
         # --------------------------------------------------------------
+
+        h_rect_left = rg.Point(intersection_center.x - width / 2, intersection_center.y + letter_thickness / 2)
+        h_rect_right = rg.Point(intersection_center.x + width / 2, intersection_center.y - letter_thickness / 2)
+        v_rect_left = rg.Point(intersection_center.x - letter_thickness / 2, h_rect_left.y)
+        v_rect_right = rg.Point(intersection_center.x + letter_thickness / 2, v_rect_left.y + height)
+
+        self.h_rect = rg.Rectangle(h_rect_left, h_rect_right)
+        self.v_rect = rg.Rectangle(v_rect_left, v_rect_right)
 
     def attach_to(self, window):
         """
@@ -162,11 +170,15 @@ class CapitalT(object):
           :type window: rg.RoseWindow
         """
         # --------------------------------------------------------------
-        # TODO: 4.
+        # Done: 4.
         #   READ the above specification, including the Example.
         #   Implement and test this method by looking at the console and
         #     the graphics window (compare it to simple_t.pdf)
         # --------------------------------------------------------------
+
+        self.v_rect.attach_to(window)
+        self.h_rect.attach_to(window)
+        window.render()
 
     def set_colors(self, fill_color, outline_color):
         """
