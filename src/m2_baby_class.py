@@ -81,6 +81,26 @@ def main():
 #     a side effect.
 # ----------------------------------------------------------------------
 
+class Baby(object):
+
+    def __init__(self, name):
+        self.name = name
+        self.feed = 0
+        print('Hello baby', name)
+
+    def feed_baby(self):
+        self.feed = 0
+        print('Thank you for feeding baby', self.name)
+
+    def hour_passes(self):
+        if self.feed == 0:
+            print('Baby', self.name, 'is sleeping.')
+        if self.feed == 1:
+            print('Baby', self.name, 'is awake. Time for food.')
+        if self.feed > 1:
+            print('Baby', self.name, 'is CRYING uncontrollably! Feed the Baby!')
+        self.feed = self.feed + 1
+
 ########################################################################
 # The   Baby   class (and its methods) should begins here.
 # Here is a reminder for the syntax to create a new class.
