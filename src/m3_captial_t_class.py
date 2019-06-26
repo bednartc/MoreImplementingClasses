@@ -16,9 +16,9 @@ def main():
     print('Un-comment the calls in MAIN one by one')
     print(' to run the testing code as you complete the TODOs.')
 
-    #run_test_simple_t()
-    #run_test_set_colors()
-    #run_test_move_by()
+    run_test_simple_t()
+    run_test_set_colors()
+    run_test_move_by()
     run_test_clone()
 
 
@@ -274,7 +274,7 @@ class CapitalT(object):
           :rtype: CapitalT
         """
         # --------------------------------------------------------------
-        # TODO: 7.
+        # Done: 7.
         #   READ the above specification, including the Example.
         #   Implement and test this method by uncommenting the appropriate
         #     run_test method in main. Compare the graphics window to
