@@ -16,10 +16,10 @@ def main():
     print('Un-comment the calls in MAIN one by one')
     print(' to run the testing code as you complete the TODOs.')
 
-    run_test_simple_t()
-    # run_test_set_colors()
-    # run_test_move_by()
-    # run_test_clone()
+    #run_test_simple_t()
+    #run_test_set_colors()
+    #run_test_move_by()
+    run_test_clone()
 
 
 def run_test_simple_t():
@@ -201,12 +201,17 @@ class CapitalT(object):
           :type outline_color: str
         """
         # --------------------------------------------------------------
-        # TODO: 5.
+        # Done: 5.
         #   READ the above specification, including the Example.
         #   Implement and test this method by uncommenting the appropriate
         #     run_test method in main. Compare the graphics window to
         #     set_colors.pdf.
         # --------------------------------------------------------------
+
+        self.h_rect.fill_color = fill_color
+        self.v_rect.fill_color = fill_color
+        self.h_rect.outline_color = outline_color
+        self.v_rect.outline_color = outline_color
 
     def move_by(self, dx, dy):
         """
@@ -231,13 +236,23 @@ class CapitalT(object):
           :type dy: int
         """
         # --------------------------------------------------------------
-        # TODO: 6.
+        # Done: 6.
         #   READ the above specification, including the Example.
         #   Implement and test this method by uncommenting the appropriate
         #     run_test method in main. Compare the graphics window to
         #     move_by.pdf. Note: the pdf shows the different locations
         #     that the T moves through, but there is only 1 T at any moment.
         # --------------------------------------------------------------
+
+        self.h_rect.corner_1.x = self.h_rect.corner_1.x + dx
+        self.h_rect.corner_2.x = self.h_rect.corner_2.x + dx
+        self.h_rect.corner_1.y = self.h_rect.corner_1.y + dy
+        self.h_rect.corner_2.y = self.h_rect.corner_2.y + dy
+
+        self.v_rect.corner_1.x = self.v_rect.corner_1.x + dx
+        self.v_rect.corner_2.x = self.v_rect.corner_2.x + dx
+        self.v_rect.corner_1.y = self.v_rect.corner_1.y + dy
+        self.v_rect.corner_2.y = self.v_rect.corner_2.y + dy
 
     def clone(self):
         """
@@ -266,6 +281,15 @@ class CapitalT(object):
         #     clone.pdf.
         # --------------------------------------------------------------
 
+        width = self.h_rect.corner_1.x - self.h_rect.corner_2.x
+        height = self.v_rect.corner_2.y - self.v_rect.corner_1.y
+        letter_thickness = self.h_rect.corner_1.y - self.h_rect.corner_2.y
+        intersection_point = rg.Point(self.h_rect.corner_2.x + (width / 2), self.h_rect.corner_1.y + (letter_thickness / 2))
+
+        sample_t = CapitalT(intersection_point,width,height,letter_thickness)
+        sample_t.set_colors(self.h_rect.fill_color,self.h_rect.outline_color)
+
+        return sample_t
 
 # ----------------------------------------------------------------------
 # If this module is running at the top level (as opposed to being
